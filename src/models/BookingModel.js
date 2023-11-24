@@ -3,6 +3,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const BookingSchema = new Schema({
+    date: {
+        type: String,
+        required: true,
+        unique: false
+    },
     name: {
         type: String,
         required: true,
@@ -25,7 +30,6 @@ const BookingSchema = new Schema({
     },
     specialRequirements: {
         type: String,
-        required: false,
     }
 
 });
