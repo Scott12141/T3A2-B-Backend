@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const { default: mongoose } = require('mongoose');
 const { databaseConnect } = require('./mongooseConnector');
 
