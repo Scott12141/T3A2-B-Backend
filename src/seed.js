@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { default:mongoose}  = require('mongoose');
+const { default: mongoose}  = require('mongoose');
 const { databaseConnect } = require('./mongooseConnector');
 const { Booking } = require('./models/BookingModel');
 const { User } = require('./models/UserModel');
