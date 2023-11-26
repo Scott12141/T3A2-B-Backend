@@ -9,6 +9,9 @@ app.get("/", (request, response) => {
     });
 });
 
+const BookingRouter = require('./controllers/BookingController');
+app.use('/bookings', BookingRouter);
+
 module.exports = {
     app
 }

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 // Connect or create and connect to a database.
 async function databaseConnect(){
     try {
-        // DB connection can take some time, so we have an await for this purpose
+        console.log("Connecting to: mongodb+srv:@cloudtmdbdb.8rfhvke.mongodb.net/?retryWrites=true&w=majority")
         await mongoose.connect(process.env.DB_URI);
         console.log("Database connected");
     } catch (error) {
