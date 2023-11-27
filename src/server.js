@@ -13,6 +13,9 @@ app.get("/", (request, response) => {
 const BookingRouter = require('./controllers/BookingController');
 app.use('/bookings', BookingRouter);
 
+const authRouter = require('./controllers/AuthController');
+app.use("/users", authRouter);
+
 module.exports = {
     app
 }

@@ -4,7 +4,7 @@ const router = express.Router();
 
 //GET all bookings from DB
 router.get("/all", async (request, response) => {
-    let result = await Booking.find({}).catch(error => {return error});
+    let result = await Booking.find({});
 
     response.json({
         bookings: result
@@ -30,7 +30,7 @@ router.post("/", async (request, response) => {
 
 //Delete single booking from DB
 router.delete("/:id", async (request, response) => {
-    let result = await Booking.findByIdAndDelete(request.params.id);
+    let result = await Booking.findByIdAndDelete(request.params.id).catch(error => {return error});
 
     response.json({
         deletedBooking: result
