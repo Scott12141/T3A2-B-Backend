@@ -26,6 +26,11 @@ const UserSchema = new Schema({
         type: String,
         required: false,
         unique: false
+    },
+    isEmployee: {
+        type: Boolean,
+        required: false,
+        default: false
     }
     
 });
