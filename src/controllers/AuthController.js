@@ -1,5 +1,6 @@
 const express = require('express');
 const { User } = require('../models/UserModel');
+const { comeparePassword, generateJwt } = require('../utilities/userAuthFunctions');
 const router = express.Router();
 
 // GET User data
@@ -20,7 +21,21 @@ router.post("/", async (request, response) => {
 
 // POST {email, password} for login
 router.post("/login", async (request, response) => {
-    
+    // Find user by email provided
+    let targetUser = await User.findOne({email: request.body.email});
+
+    // Compare password provided by user with that in DB
+    let isPasswordCorrect = await comeparePassword(request.body.password, targetUser.password);
+
+    if (!isPasswordCorrect){
+        response.status(403).json({error:"You are not authorised!"})
+    }
+
+    // If user exists and password is correct - generate JWT
+    let assignedJwt = generateJwt(targetUser._id.toString());
+
+    response.json({jwt: assignedJwt})
+
 });
 
 // GET JWT from headers
