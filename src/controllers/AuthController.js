@@ -22,14 +22,14 @@ router.post("/", async (request, response) => {
 // POST {email, password} for login
 router.post("/login", async (request, response) => {
     // Find user by email provided
-    let targetUser = await User.findOne({email: request.body.email});
+    let targetUser = await User.findOne({email: request.body.email}).catch(error => {return error});
 
     if (!targetUser){
         return response.status(403).json({error:"Invalid email, or account does not exist"});
     }
 
     // Compare password provided by user with that in DB
-    let isPasswordCorrect = await comeparePassword(request.body.password, targetUser.password);
+    let isPasswordCorrect = await comeparePassword(request.body.password, targetUser.password).catch(error => {return error});
 
     if (!isPasswordCorrect){
         return response.status(403).json({error:"You are not authorised!"});
