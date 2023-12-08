@@ -19,10 +19,10 @@ router.post("/", async (request, response) => {
     if (targetUser){
         return response.status(400).json({error:"Email already exists"});
     }
-    
+
     let newUser = await User.create(request.body).catch(error => {return error});
 
-    response.json(newUser);
+    response.json({newUser, message: "Account Created Successfully"});
 });
 
 // POST {email, password} for login
