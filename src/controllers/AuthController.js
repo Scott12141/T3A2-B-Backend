@@ -22,7 +22,7 @@ router.post("/", async (request, response) => {
 
     let newUser = await User.create(request.body).catch(error => {return error});
 
-    response.json({newUser, message: "Account Created Successfully"});
+    response.json({newUser, message: "Account Created Successfully! Redirecting you to Log In..."});
 });
 
 // POST {email, password} for login
