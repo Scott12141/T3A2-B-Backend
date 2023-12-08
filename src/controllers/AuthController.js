@@ -14,6 +14,12 @@ router.get("/", async (request, response) => {
 
 // POST a new User to DB
 router.post("/", async (request, response) => {
+    
+    let targetUser = await User.findOne({email: request.body.email}).catch(error => {return error});
+    if (targetUser){
+        return response.status(400).json({error:"Email already exists"});
+    }
+    
     let newUser = await User.create(request.body).catch(error => {return error});
 
     response.json(newUser);
@@ -36,9 +42,9 @@ router.post("/login", async (request, response) => {
     }
 
     // If user exists and password is correct - generate JWT
-    let assignedJwt = generateJwt(targetUser._id.toString());
+    let token = generateJwt(targetUser._id.toString());
 
-    response.json({jwt: assignedJwt})
+    response.json({jwt: token})
 
 });
 
