@@ -24,7 +24,8 @@ router.post("/", async (request, response) => {
     let result = await Booking.create(request.body).catch(error => {return error});
 
     response.json({
-        bookings: result
+        bookings: result,
+        message: "Booking Successful! Redirecting you to Bookings..."
     });
 });
 
