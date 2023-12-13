@@ -42,9 +42,9 @@ router.post("/login", async (request, response) => {
     }
 
     // If user exists and password is correct - generate JWT
-    let token = generateJwt(targetUser._id.toString());
+    let assignedJwt = generateJwt(targetUser._id.toString());
 
-    response.json({jwt: token})
+    response.json({jwt: assignedJwt, message: "Logged in Successfully! Redirecting you to Bookings..."})
 
 });
 
