@@ -4,7 +4,7 @@ const app = express();
 
 const cors = require('cors');
 const corsOptions = {
-    origin: ["http://localhost:3000", "http://localhost:3000/", "https://someDeployedWebsite.com"],
+    origin: ["http://localhost:3000", "http://localhost:3000/", "https://taylormade.netlify.app"],
     optionsSuccessStatus: 200
 }
 app.use(cors(corsOptions));
